@@ -1,8 +1,11 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Book Manager</router-link> |
-      <router-link to="/home">Home</router-link> |
+      <router-link to="/">音乐专辑管理</router-link> |
+      <router-link to="/claw">Claw Program</router-link> |
+      <router-link to="/input">Input Mongo</router-link> |
+      <router-link to="/mochaTest">mocha测试</router-link> |
+      <router-link to="/httpTest">音乐专辑接口测试</router-link> |
       <router-link to="/about">About</router-link>
     </div>
     <router-view/>

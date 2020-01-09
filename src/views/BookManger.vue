@@ -13,30 +13,33 @@
         </el-dialog>
 
 
-        <h1>Book Manager</h1>
-        <el-form :inline="true" :model="book" class="demo-form-inline">
-            <el-form-item label="图书名称">
-                <el-input v-model="book.name" placeholder="请输入书名"></el-input>
+        <h1>Albums Manager</h1>
+        <el-form :inline="true" :model="album" class="demo-form-inline">
+            <el-form-item label="ID">
+                <el-input v-model="album.album_id" placeholder="请输入书名"></el-input>
+            </el-form-item>
+            <el-form-item label="Album Name">
+                <el-input v-model="album.album_name" placeholder="请输入书名"></el-input>
             </el-form-item>
             <el-form-item label="图书价格">
-                <el-input v-model.number="book.price" type="number" placeholder="请输入价格"></el-input>
+                <el-input v-model.number="album.price" type="number" placeholder="请输入价格"></el-input>
             </el-form-item>
             <el-form-item>
-                <el-button type="primary" @click="addBook">添加图书</el-button>
+                <el-button type="primary" @click="addAlbum">添加图书</el-button>
             </el-form-item>
         </el-form>
 
         <el-table
-                :data="books"
+                :data="albums"
                 style="width: 80%">
             <el-table-column
-                    prop="id"
+                    prop="album_id"
                     label="ID"
                     width="180">
             </el-table-column>
             <el-table-column
-                    prop="name"
-                    label="图书名称"
+                    prop="album_name"
+                    label="Album Name"
                     width="300">
             </el-table-column>
             <el-table-column
@@ -47,8 +50,8 @@
                     fixed="right"
                     label="操作"
                     width="100">
-                <template slot-scope="book">
-                    <el-button @click="deleteBook(book.row)" type="text" size="small">删除</el-button>
+                <template slot-scope="album">
+                    <el-button @click="deleteAlbum(album.row)" type="text" size="small">删除</el-button>
                     <el-button @click="dialogVisible=true" type="text" size="small">编辑</el-button>
                 </template>
             </el-table-column>
@@ -63,47 +66,30 @@
     // import _ from 'lodash'
 
     export default {
-        name: "BookManger",
+        name: "AlbumManger",
         data(){
             return {
                 maxId:2,
-                book:{name:'',price:''},
-                baseurl:"http://www.shangzai.com:3000/books/",
-                //baseurl:"http://localhost:3000/books",
+                album:{name:'',price:''},
+                //baseurl:"http://www.shangzai.com:3000/albums/",
+                baseurl:"http://localhost:3000/albums",
                 dialogVisible:false,
-                books:[{id:1,name:"book1",price:200},
-                    {id:2,name:"book2",price:230}]
+                albums:[{id:1,name:"album1",price:200},
+                    {id:2,name:"album2",price:230}]
             }
         },
         mounted(){
             fetch(this.baseurl)
                 .then(res=>res.json())
-                .then(bs => this.books = bs)
+                .then(bs => this.albums = bs)
         },
         methods:{
-            deleteBook(book){
-                window.console.log(book)
+            deleteAlbum(album){
+                window.console.log(album)
 
                 //let request = require('request');
-                let myurl = this.baseurl + "/" + book.id;
-                // request({
-                //     url: myurl,
-                //     method: "DELETE",
-                //     headers: {
-                //         "content-type": "application/json",
-                //     },
-                //     body: '{}'
-                // }, function(error, response) {
-                //     if (!error && response.statusCode == 200) {
-                //
-                //         fetch("http://localhost:3000/books")
-                //             .then(res=>res.json())
-                //             .then(bs => this.books = bs);
-                //         alert("Del Book Successful.");
-                //     } else {
-                //         alert("Del Book Error.")
-                //     }
-                // });
+                let myurl = this.baseurl + "/" + album.album_id;
+
                 fetch(myurl,{
                     method:"DELETE",
                     headers:{
@@ -113,34 +99,34 @@
                     .then(rs=>{
                         window.console.log(rs);
                         if(!rs.code) {
-                            let index=this.books.findIndex(item=>item.id==book.id)
-                            this.books.splice(index,1)
+                            let index=this.albums.findIndex(item=>item.album_id==album.album_id)
+                            this.albums.splice(index,1)
                         }
                     })
 
 
             },
-            addBook(){
-                // this.book.id=++this.maxId
-                // let bk=_.cloneDeep(this.book)
-                // this.books.push(bk)
+            addAlbum(){
+                // this.album.album_id=++this.maxId
+                // let bk=_.cloneDeep(this.album)
+                // this.albums.push(bk)
                 // var request = require('request');
                 // request({
-                //     url: "http://localhost:3000/books/add",
+                //     url: "http://localhost:3000/albums/add",
                 //     method: "PUT",
                 //     json: true,
                 //     headers: {
                 //         "content-type": "application/json",
                 //     },
-                //     body: this.book
+                //     body: this.album
                 // }, function(error, response) {
                 //     if (!error && response.statusCode == 200) {
-                //         fetch("http://localhost:3000/books")
+                //         fetch("http://localhost:3000/albums")
                 //             .then(res=>res.json())
-                //             .then(bs => this.books = bs);
-                //         alert("Add Book Successful.");
+                //             .then(bs => this.albums = bs);
+                //         alert("Add album Successful.");
                 //     } else {
-                //         alert("Add Book Error.")
+                //         alert("Add album Error.")
                 //     }
                 // });
                 fetch(this.baseurl,{
@@ -148,9 +134,9 @@
                     headers:{
                         "content-type": "application/json"
                     },
-                    body: JSON.stringify(this.book)
+                    body: JSON.stringify(this.album)
                 }).then(res=>res.json())
-                .then(nb=>this.books.push(nb))
+                .then(nb=>this.albums.push(nb))
 
             },
             handleClose(){
@@ -160,7 +146,7 @@
         },
         computed:{
             priceTotal(){
-                return this.books.reduce((prev,book)=>prev+book.price,0)
+                return this.albums.reduce((prev,album)=>prev+album.price,0)
             }
         }
     }

@@ -1,0 +1,47 @@
+<template>
+<div class="about">
+    <pre align = "left">
+
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection) or
+# paste cURL into the file and request will be converted to HTTP Request format.
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+
+GET http://localhost:3000/albums
+Accept: application/json
+
+###
+
+
+DELETE http://localhost:3000/albums/1
+Accept: application/json
+
+###
+
+POST http://localhost:3000/albums
+Content-Type: application/json
+
+{"album_id":1,
+  "album_name":"albumname",
+  "public_time":"public_time",
+  "week" : 20,
+  "price": 34,
+  "cover": "http://localhost/a.jpg",
+  "singers": [
+    {"singer_id":34,"singer_name":"Singer Name"}
+  ]}
+
+###
+
+
+
+module.exports={addAlbum}
+
+
+</pre>
+  </div>
+</template>
