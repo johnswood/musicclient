@@ -2,11 +2,10 @@
   <div id="app">
     <div id="nav">
 
-      <router-link to="/albumlist">Album List</router-link> |
-      <router-link to="/singerlist">Singer List</router-link> |
-      <router-link to="/">音乐专辑管理</router-link> |
-      <router-link to="/mochaTest">mocha测试</router-link> |
-      <router-link to="/httpTest">音乐专辑接口测试</router-link> |
+      <router-link to="/albumlist">专辑列表</router-link> |
+      <router-link to="/singerlist">歌手列表</router-link> |
+      <router-link to="/">登录</router-link> |
+      <router-link to="/userlist">用户列表</router-link> |
       <router-link to="/about">About</router-link>
     </div>
     <router-view/>

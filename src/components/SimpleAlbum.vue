@@ -16,7 +16,7 @@
         name: "Album",
         props: {
             album_id: Number,
-            coverpic: String,
+            photo: String,
             album_name: String,
             issue_date: String,
         },
@@ -31,7 +31,7 @@
                 return dd.toLocaleDateString();
             },
             picurl(){
-                return this.baseurl + this.coverpic;
+                return this.baseurl + this.photo;
             }
         }
 

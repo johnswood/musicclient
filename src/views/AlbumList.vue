@@ -1,5 +1,6 @@
 <template>
     <div>
+        <router-link to="/albumadd">增加专辑</router-link><br>
         <div style="float:left" v-for="album in albums" :key="album.album_id">
             <Album v-bind="album"></Album>
         </div>

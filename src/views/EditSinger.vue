@@ -12,6 +12,7 @@
                 <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
             </span>
         </el-dialog>
+            <h1>编辑歌手信息</h1>
         <el-form :inline="true" :model="mysinger" class="demo-form-inline">
             <el-form-item label="ID">
                 <el-input v-model="mysinger.singer_id" placeholder="歌手ID" :readonly="true"  style="width:600px"></el-input>
@@ -72,7 +73,7 @@
                 .then(bs => {
                     this.mysinger = bs[0]
                     this.mysinger.birthday = new Date(this.mysinger.birthday);
-                    window.console.log("editsinger mounted, mysinger.photo = " + this.mysinger.photo);
+                    //window.console.log("editsinger mounted, mysinger.photo = " + this.mysinger.photo);
                 })
 
         },

@@ -1,5 +1,17 @@
 <template>
     <div>
+        <el-dialog
+                title="提示"
+                :visible.sync="dialogVisible"
+                width="30%"
+                :before-close="handleClose">
+            <span>{{msg}}</span>
+            <span slot="footer" class="dialog-footer">
+                <router-link tag="a" :to="{path:'/albumlist'}">
+                    <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+                </router-link>
+            </span>
+        </el-dialog>
         <el-row>
             <el-col :span="6"><div align="left">
                 <el-image
@@ -42,6 +54,17 @@
             </div>
             </el-col>
         </el-row>
+        <el-row>
+            <div>
+
+            </div>
+            <router-link tag="a" :to="{path:'/albumedit/' + this.album.album_id}">
+                <el-button  size="small">编辑</el-button>
+            </router-link>
+
+            <el-button  @click="deleteAlbum" size="small">删除</el-button>
+
+        </el-row>
     </div>
 
 </template>
@@ -56,7 +79,9 @@
             return {
                 "baseurl": "http://localhost:3000",
                 "album":{},
-                id:0
+                id:0,
+                dialogVisible: false,
+                msg: "成功更新",
             }
         },
         created(){
@@ -69,13 +94,35 @@
                     this.album = bs[0]
                 })
         },
+        methods:{
+            deleteAlbum(){
+                let url = this.baseurl + "/albums/" + this.id
+                fetch(url, {
+                    method: "DELETE",
+                    headers: {
+                        "content-type": "application/json"
+                    }
+                }).then(res => res.json())
+                    .then(raw => {
+                        if(raw){
+                            this.msg = "成功删除歌手";
+                            this.dialogVisible = true;
+                        }
+
+                    })
+            },
+            handleClose(){
+
+            }
+
+        },
         computed:{
             issuedate(){
                 var dd = new Date(this.album.issue_date)
                 return dd.toLocaleDateString();
             },
             picurl(){
-                return this.baseurl + this.album.coverpic;
+                return this.baseurl + this.album.photo;
             }
         }
     }

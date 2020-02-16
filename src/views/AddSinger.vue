@@ -11,6 +11,7 @@
                 <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
             </span>
         </el-dialog>
+        <h1>增加歌手</h1>
         <el-form :inline="true" :model="mysinger" class="demo-form-inline" size="small">
 <!--            <el-form-item label="ID">-->
 <!--                <el-input v-model="mysinger.singer_id" placeholder="歌手ID" ></el-input>-->

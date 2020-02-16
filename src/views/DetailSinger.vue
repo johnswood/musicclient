@@ -1,5 +1,18 @@
 <template>
     <div>
+        <el-dialog
+                title="提示"
+                :visible.sync="dialogVisible"
+                width="30%"
+                :before-close="handleClose">
+            <span>{{msg}}</span>
+            <span slot="footer" class="dialog-footer">
+<!--                <el-button @click="dialogVisible = false">取 消</el-button>-->
+                <router-link tag="a" :to="{path:'/singerlist'}">
+                    <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+                </router-link>
+            </span>
+        </el-dialog>
         <el-row>
             <el-col :span="18">
                 <div align="center">
@@ -33,13 +46,11 @@
             <router-link tag="a" :to="{path:'/singeredit/' + this.singer.singer_id}">
                 <el-button  size="small">编辑</el-button>
             </router-link>
+
+                <el-button  @click="deleteSinger" size="small">删除</el-button>
+
         </el-row>
 
-<!--        <el-row>-->
-<!--            <div  id="divedit" style="display: none;">-->
-<!--                <EditSinger v-bind:myid="id" v-bind:singer="this.singer"></EditSinger>-->
-<!--            </div>-->
-<!--        </el-row>-->
 
     </div>
 
@@ -55,7 +66,9 @@
                 "baseurl": "http://localhost:3000",
                 "singer":{},
                 id:0,
-                myStatus: true
+                myStatus: true,
+                dialogVisible: false,
+                msg: "成功更新",
             }
         },
         created(){
@@ -69,10 +82,27 @@
                 })
         },
         methods:{
-            showEdit(){
-                window.open("/singeredit/" + this.singer.singer_id);
+            deleteSinger() {
+
+                let url = this.baseurl + "/singers/" + this.singer.singer_id
+                fetch(url, {
+                    method: "DELETE",
+                    headers: {
+                        "content-type": "application/json"
+                    }
+                }).then(res => res.json())
+                    .then(raw => {
+                        if(raw){
+                            this.msg = "成功删除歌手";
+                            this.dialogVisible = true;
+                        }
+
+                    })
+            },
+            handleClose(){
 
             }
+
         },
         computed:{
             birthday(){

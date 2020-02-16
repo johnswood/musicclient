@@ -1,15 +1,21 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import BookManger from "../views/AlbumManger";
+//import BookManger from "../views/AlbumManger";
 import AlbumList from "../views/AlbumList";
+import AddAlbum from "../views/AddAlbum";
+import EditAlbum from "../views/EditAlbum";
 import DetailAlbum from "../views/DetailAlbum";
 import SingerList from "../views/SingerList";
 import AddSinger from "../views/AddSinger";
 import EditSinger from "../views/EditSinger";
 import DetailSinger from "../views/DetailSinger";
-import MochaTest from "../views/MochaTest";
-import HttpTest from "../views/HttpTest";
+import AddUser from "../views/AddUser"
+import RegisterUser from "../views/RegisterUser"
+import EditUser from "../views/EditUser"
+import UserList from "../views/UserList";
+import Login from "../views/Login";
+
 Vue.use(VueRouter)
 
 
@@ -17,8 +23,8 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'bookManager',
-    component: BookManger
+    name: 'Login',
+    component: Login
   },
   {
     path: '/home',
@@ -29,6 +35,16 @@ const routes = [
     path: '/albumlist',
     name: 'AlbumList',
     component: AlbumList
+  },
+  {
+    path: '/albumadd',
+    name: 'AddAlbum',
+    component: AddAlbum
+  },
+  {
+    path: '/albumedit/:id',
+    name: 'EditAlbum',
+    component: EditAlbum
   },
   {
     path: '/album/:id',
@@ -56,14 +72,24 @@ const routes = [
     component: DetailSinger
   },
   {
-    path: '/mochaTest',
-    name: 'mochatest',
-    component: MochaTest,
+    path: '/registerUser',
+    name: 'RegisterUser',
+    component: RegisterUser,
   },
   {
-    path: '/httpTest',
-    name: 'httptest',
-    component: HttpTest,
+    path: '/useradd',
+    name: 'AddUser',
+    component: AddUser,
+  },
+  {
+    path: '/useredit/:id',
+    name: 'EditUser',
+    component: EditUser,
+  },
+  {
+    path: '/userlist',
+    name: 'UserList',
+    component: UserList,
   },
   {
     path: '/about',
