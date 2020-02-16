@@ -1,9 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import BookManger from "../views/BookManger";
-import Claw from "../views/Claw";
-import InputMongo from "../views/Input";
+import BookManger from "../views/AlbumManger";
+import AlbumList from "../views/AlbumList";
+import DetailAlbum from "../views/DetailAlbum";
+import SingerList from "../views/SingerList";
+import AddSinger from "../views/AddSinger";
+import EditSinger from "../views/EditSinger";
+import DetailSinger from "../views/DetailSinger";
 import MochaTest from "../views/MochaTest";
 import HttpTest from "../views/HttpTest";
 Vue.use(VueRouter)
@@ -22,14 +26,34 @@ const routes = [
     component: Home
   },
   {
-    path: '/claw',
-    name: 'claw',
-    component: Claw
+    path: '/albumlist',
+    name: 'AlbumList',
+    component: AlbumList
   },
   {
-    path: '/input',
-    name: 'input',
-    component: InputMongo,
+    path: '/album/:id',
+    name: 'DetailAlbum',
+    component: DetailAlbum
+  },
+  {
+    path: '/singerlist',
+    name: 'SingerList',
+    component: SingerList,
+  },
+  {
+    path: '/singeradd',
+    name: 'AddSinger',
+    component: AddSinger,
+  },
+  {
+    path: '/singeredit/:id',
+    name: 'EditSinger',
+    component: EditSinger,
+  },
+  {
+    path: '/singer/:id',
+    name: 'DetailSinger',
+    component: DetailSinger
   },
   {
     path: '/mochaTest',

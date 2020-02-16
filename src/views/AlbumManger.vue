@@ -16,16 +16,16 @@
         <h1>Albums Manager</h1>
         <el-form :inline="true" :model="album" class="demo-form-inline">
             <el-form-item label="ID">
-                <el-input v-model="album.album_id" placeholder="请输入书名"></el-input>
+                <el-input v-model="album.album_id" placeholder="请输入唱片名"></el-input>
             </el-form-item>
             <el-form-item label="Album Name">
-                <el-input v-model="album.album_name" placeholder="请输入书名"></el-input>
+                <el-input v-model="album.album_name" placeholder="请输入唱片名"></el-input>
             </el-form-item>
             <el-form-item label="图书价格">
                 <el-input v-model.number="album.price" type="number" placeholder="请输入价格"></el-input>
             </el-form-item>
             <el-form-item>
-                <el-button type="primary" @click="addAlbum">添加图书</el-button>
+                <el-button type="primary" @click="addAlbum">添加唱片</el-button>
             </el-form-item>
         </el-form>
 
@@ -37,14 +37,25 @@
                     label="ID"
                     width="180">
             </el-table-column>
+            <el-table-column prop="coverpic" label="图片"  width="300">
+                <template>
+                    <div class="demo-image__placeholder">
+                        <div class="block">
+                            <span class="demonstration">默认</span>
+                            <el-image :src="coverpic"></el-image>
+                        </div>
+                    </div>
+                </template>
+
+            </el-table-column>
             <el-table-column
                     prop="album_name"
                     label="Album Name"
-                    width="300">
+                    width="200">
             </el-table-column>
             <el-table-column
-                    prop="price"
-                    label="图书价格">
+                    prop="issue_date"
+                    label="发行日期">
             </el-table-column>
             <el-table-column
                     fixed="right"
@@ -57,9 +68,8 @@
             </el-table-column>
 
         </el-table>
-        <h2>总价格： {{priceTotal}}</h2>
-
     </div>
+
 </template>
 
 <script>
@@ -107,28 +117,7 @@
 
             },
             addAlbum(){
-                // this.album.album_id=++this.maxId
-                // let bk=_.cloneDeep(this.album)
-                // this.albums.push(bk)
-                // var request = require('request');
-                // request({
-                //     url: "http://localhost:3000/albums/add",
-                //     method: "PUT",
-                //     json: true,
-                //     headers: {
-                //         "content-type": "application/json",
-                //     },
-                //     body: this.album
-                // }, function(error, response) {
-                //     if (!error && response.statusCode == 200) {
-                //         fetch("http://localhost:3000/albums")
-                //             .then(res=>res.json())
-                //             .then(bs => this.albums = bs);
-                //         alert("Add album Successful.");
-                //     } else {
-                //         alert("Add album Error.")
-                //     }
-                // });
+
                 fetch(this.baseurl,{
                     method:"POST",
                     headers:{
@@ -145,8 +134,8 @@
 
         },
         computed:{
-            priceTotal(){
-                return this.albums.reduce((prev,album)=>prev+album.price,0)
+            picurl(coverpic){
+                return this.baseurl + coverpic;
             }
         }
     }

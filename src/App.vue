@@ -1,9 +1,10 @@
 <template>
   <div id="app">
     <div id="nav">
+
+      <router-link to="/albumlist">Album List</router-link> |
+      <router-link to="/singerlist">Singer List</router-link> |
       <router-link to="/">音乐专辑管理</router-link> |
-      <router-link to="/claw">Claw Program</router-link> |
-      <router-link to="/input">Input Mongo</router-link> |
       <router-link to="/mochaTest">mocha测试</router-link> |
       <router-link to="/httpTest">音乐专辑接口测试</router-link> |
       <router-link to="/about">About</router-link>
