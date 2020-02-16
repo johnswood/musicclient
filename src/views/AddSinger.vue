@@ -11,25 +11,29 @@
                 <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
             </span>
         </el-dialog>
-        <el-form :inline="true" :model="mysinger" class="demo-form-inline">
+        <el-form :inline="true" :model="mysinger" class="demo-form-inline" size="small">
 <!--            <el-form-item label="ID">-->
 <!--                <el-input v-model="mysinger.singer_id" placeholder="歌手ID" ></el-input>-->
 <!--            </el-form-item><br>-->
             <el-form-item label="姓名">
-                <el-input v-model="mysinger.singer_name" placeholder="歌手姓名"></el-input>
+                <el-input v-model="mysinger.singer_name" placeholder="歌手姓名"  style="width:600px"></el-input>
             </el-form-item><br>
             <el-form-item label="生日">
                 <el-date-picker
                         v-model="mysinger.birthday"
                         type="date"
-                        placeholder="选择生日">
+                        placeholder="选择生日"
+                        style="width:600px"
+                >
                 </el-date-picker>
             </el-form-item><br>
             <el-form-item label="地区">
-                <el-input v-model="mysinger.area" placeholder="歌手地区"></el-input>
+                <el-input v-model="mysinger.area" placeholder="歌手地区"  style="width:600px"></el-input>
             </el-form-item><br>
             <el-form-item label="介绍">
-                <el-input v-model="mysinger.comment" placeholder="歌手介绍"></el-input>
+                <el-input v-model="mysinger.comment" placeholder="歌手介绍"
+                          type="textarea"  style="width:600px"
+                          :autosize="{ minRows: 2, maxRows: 20}"></el-input>
             </el-form-item><br>
             <el-form-item>
                 <el-button type="primary" @click="addSinger">增加信息</el-button>

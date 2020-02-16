@@ -14,23 +14,23 @@
         </el-dialog>
         <el-form :inline="true" :model="mysinger" class="demo-form-inline">
             <el-form-item label="ID">
-                <el-input v-model="mysinger.singer_id" placeholder="歌手ID" :readonly="true" ></el-input>
+                <el-input v-model="mysinger.singer_id" placeholder="歌手ID" :readonly="true"  style="width:600px"></el-input>
             </el-form-item><br>
             <el-form-item label="姓名">
-                <el-input v-model="mysinger.singer_name" placeholder="歌手姓名"></el-input>
+                <el-input v-model="mysinger.singer_name" placeholder="歌手姓名"  style="width:600px"></el-input>
             </el-form-item><br>
             <el-form-item label="生日">
                 <el-date-picker
                         v-model="mysinger.birthday"
-                        type="date"
+                        type="date"  style="width:600px"
                         placeholder="选择生日">
                 </el-date-picker>
             </el-form-item><br>
             <el-form-item label="地区">
-                <el-input v-model="mysinger.area" placeholder="歌手地区"></el-input>
+                <el-input v-model="mysinger.area" placeholder="歌手地区"  style="width:600px"></el-input>
             </el-form-item><br>
             <el-form-item label="介绍">
-                <el-input v-model="mysinger.comment" placeholder="歌手介绍"></el-input>
+                <el-input v-model="mysinger.comment" placeholder="歌手介绍"  style="width:600px"></el-input>
             </el-form-item><br>
             <el-form-item>
                 <el-button type="primary" @click="updateSinger">修改信息</el-button>

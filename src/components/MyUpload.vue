@@ -81,6 +81,7 @@
                 let res = "";
                 if(this.imageUrl) res = this.imageUrl;
                 else res =  this.basepic +  this.curUrl;
+                res = res + "?t=" + Math.random();
                 window.console.log("myupload computed:getimgurl= %s" , res)
                 return res;
             }
