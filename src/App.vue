@@ -6,7 +6,7 @@
       <router-link to="/singerlist">歌手列表</router-link> |
       <router-link to="/">登录</router-link> |
       <router-link to="/userlist">用户列表</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/about">建库语句</router-link>
     </div>
     <router-view/>
   </div>

@@ -14,7 +14,7 @@
         <router-link to="/useradd">增加用户</router-link><br>
         <el-form :inline="true" class="demo-form-inline">
             <el-form-item label="真实姓名与用户名">
-                <el-input v-model="searchstr" placeholder="用户姓名"  style="width:600px"></el-input>
+                <el-input v-model="searchstr" placeholder="用户姓名或用户名"  style="width:600px"></el-input>
             </el-form-item>
             <el-form-item>
                 <el-button type="primary" @click="updateUser">查找</el-button>
