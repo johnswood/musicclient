@@ -31,9 +31,9 @@
             </el-col>
             <el-row>
                 <el-col :span="24">
-                    <span>
+                    <div class="text-wrapper">
                     <b>介绍：</b><br>{{singer.comment}}
-                    </span>
+                    </div>
                 </el-col>
             </el-row>
 
@@ -122,5 +122,8 @@
 </script>
 
 <style scoped>
-
+    .text-wrapper {
+        white-space: pre-wrap;
+        text-align: left;
+    }
 </style>

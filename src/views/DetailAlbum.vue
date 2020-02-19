@@ -19,7 +19,7 @@
                         :src="picurl"></el-image><br>
                 <span><p>公司：{{album.company}}</p></span><br>
                 <span>发行日期：{{issuedate}}</span><br>
-                <span><p >说明：<br>{{album.comment}}</p></span>
+                <div class ="text-wrapper"><p >说明：<br>{{album.comment}}</p></div>
             </div>
             </el-col>
             <el-col :span="18"><div align ="left">
@@ -131,5 +131,9 @@
 <style scoped>
 .aaa{
     text-align:left
+}
+.text-wrapper {
+    white-space: pre-wrap;
+    text-align: left;
 }
 </style>

@@ -143,6 +143,10 @@
                 msg: "添加专辑成功。"
             }
         },
+        mounted() {
+            //this.albumurl = "http://"+ this.SERVERIP + ":3000/albums"
+            //window.console.log("SERVERIP: %s", this.SERVERIP)
+        },
         methods:{
             removeSong(item){
                 var index = this.album.songs.indexOf(item)

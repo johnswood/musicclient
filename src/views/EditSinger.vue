@@ -31,7 +31,7 @@
                 <el-input v-model="mysinger.area" placeholder="歌手地区"  style="width:600px"></el-input>
             </el-form-item><br>
             <el-form-item label="介绍">
-                <el-input v-model="mysinger.comment" placeholder="歌手介绍"  style="width:600px"></el-input>
+                <el-input v-model="mysinger.comment" placeholder="歌手介绍"  type="textarea" style="width:600px"></el-input>
             </el-form-item><br>
             <el-form-item>
                 <el-button type="primary" @click="updateSinger">修改信息</el-button>
